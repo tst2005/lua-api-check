@@ -1,4 +1,11 @@
 
+local verbose = 0
+if arg[1] == "-v" then
+	verbose = verbose +1
+elseif arg[1] == "-vv" then
+	verbose = verbose +2
+end
+
 local check_shell_env = false
 
 local modules = {"_G", "coroutine", "debug", --[["file", ]] "io", "math", "os", "package", "string", "table", "utf8"}
@@ -8,17 +15,7 @@ local defs = {}
 for _i, modname in ipairs(modules) do
 	defs[modname] = require("api-check.def."..assert(modname))
 end
---defs._G = require "api-check.def._G"
---defs.coroutine = require "api-check.def.coroutine"
---defs.debug = require "api-check.def.debug"
 defs.file = require "api-check.def.file"
---defs.io = require "api-check.def.io"
---defs.math = require "api-check.def.math"
---defs.os = require "api-check.def.os"
---defs.package = require "api-check.def.package"
---defs.string = require "api-check.def.string"
---defs.table = require "api-check.def.table"
---defs.utf8 = require "api-check.def.utf8"
 
 local function checkthis(modname, mod, def)
 	assert(type(modname)=="string")
@@ -31,6 +28,10 @@ local function checkthis(modname, mod, def)
 			print("missing "..modname.."["..name.."]")
 		elseif xtype ~= type(v) then
 			print("wrong type for "..modname.."["..name.."] expected "..xtype..", got "..type(v))
+		else
+			if verbose>=2 then
+				print(" - "..modname.."."..name)
+			end
 		end
 	end
 	for i=1,#def,2 do
@@ -47,14 +48,20 @@ local function checkthis(modname, mod, def)
 	end
 end
 
-checkthis("_G", _G, defs._G)
-checkthis("coroutine", coroutine, defs.coroutine)
+--checkthis("_G", _G, defs._G)
+--checkthis("coroutine", coroutine, defs.coroutine)
 for _i, modname in ipairs(modules) do
 	local def = assert(defs[modname], "emptydef "..modname)
 	local mod = package.loaded[modname]
+	if verbose >=1 then
+		print("Checking...", modname)
+	end
 	checkthis(modname, mod, def)
 end
 local file = getmetatable(io.stdin)
+if verbose >=1 then
+	print("Checking...", "file")
+end
 checkthis("file", file, defs.file)
 
 if check_shell_env then
