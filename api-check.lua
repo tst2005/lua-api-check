@@ -8,14 +8,13 @@ end
 
 local check_shell_env = false
 
-local modules = {"_G", "coroutine", "debug", --[["file", ]] "io", "math", "os", "package", "string", "table", "utf8"}
+local modules = { "_G", "coroutine", "debug", "file", "io", "math", "os", "package", "string", "table", "utf8"}
 
 local defs = {}
 
 for _i, modname in ipairs(modules) do
 	defs[modname] = require("api-check.def."..assert(modname))
 end
-defs.file = require "api-check.def.file"
 
 local function checkthis(modname, mod, def)
 	assert(type(modname)=="string")
@@ -48,21 +47,17 @@ local function checkthis(modname, mod, def)
 	end
 end
 
---checkthis("_G", _G, defs._G)
---checkthis("coroutine", coroutine, defs.coroutine)
+local where = {}
+where.file = getmetatable(io.stdin)
+
 for _i, modname in ipairs(modules) do
 	local def = assert(defs[modname], "emptydef "..modname)
-	local mod = package.loaded[modname]
+	local mod = where[modname] or package.loaded[modname]
 	if verbose >=1 then
 		print("Checking...", modname)
 	end
 	checkthis(modname, mod, def)
 end
-local file = getmetatable(io.stdin)
-if verbose >=1 then
-	print("Checking...", "file")
-end
-checkthis("file", file, defs.file)
 
 if check_shell_env then
 	require "api-check/checkenv"()
