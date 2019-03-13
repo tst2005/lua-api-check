@@ -14,4 +14,13 @@ addif (true) {
 	f,"setvbuf",
 	f,"write",
 }
+addif (true) {
+	f,"__tostring",
+	f,"__gc",
+	t,"__index",
+}
+addif (is.lua53) {
+	s,"__name",
+}
+
 return def
