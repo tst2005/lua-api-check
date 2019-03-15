@@ -22,7 +22,7 @@ The module [api-check.is](api-check/is.lua) is the module that detect the suppor
 
 # API definitions
 
-# Sample of the package module
+# Sample of module definition
 
 The package definition ([api-check/def/package.lua](api-check/def/package.lua)):
 ```lua
