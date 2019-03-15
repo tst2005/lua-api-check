@@ -1,0 +1,186 @@
+```sh
+$ lua5.2 api-check.lua -v
+Checking...	_G
+Checking...	coroutine
+Checking...	debug
+Checking...	file
+Checking...	io
+Checking...	math
+Checking...	os
+Checking...	package
+Checking...	string
+Checking...	table
+Checking...	utf8
+```
+
+```sh
+$ lua5.2 api-check.lua -vv
+Checking...	_G
+ - _G._G
+ - _G._VERSION
+ - _G.arg
+ - _G.assert
+ - _G.collectgarbage
+ - _G.coroutine
+ - _G.debug
+ - _G.dofile
+ - _G.error
+ - _G.getmetatable
+ - _G.io
+ - _G.ipairs
+ - _G.load
+ - _G.loadfile
+ - _G.math
+ - _G.next
+ - _G.os
+ - _G.package
+ - _G.pairs
+ - _G.pcall
+ - _G.print
+ - _G.rawequal
+ - _G.rawget
+ - _G.rawset
+ - _G.require
+ - _G.select
+ - _G.setmetatable
+ - _G.string
+ - _G.table
+ - _G.tonumber
+ - _G.tostring
+ - _G.type
+ - _G.xpcall
+ - _G.loadstring
+ - _G.unpack
+ - _G.bit32
+ - _G.module
+ - _G.rawlen
+ - _G.rawlen
+Checking...	coroutine
+ - coroutine.create
+ - coroutine.resume
+ - coroutine.running
+ - coroutine.status
+ - coroutine.wrap
+ - coroutine.yield
+Checking...	debug
+ - debug.debug
+ - debug.gethook
+ - debug.getinfo
+ - debug.getlocal
+ - debug.getmetatable
+ - debug.getregistry
+ - debug.getupvalue
+ - debug.sethook
+ - debug.setlocal
+ - debug.setmetatable
+ - debug.setupvalue
+ - debug.traceback
+ - debug.getuservalue
+ - debug.setuservalue
+ - debug.upvalueid
+ - debug.upvaluejoin
+Checking...	file
+ - file.close
+ - file.flush
+ - file.lines
+ - file.read
+ - file.seek
+ - file.setvbuf
+ - file.write
+ - file.__tostring
+ - file.__gc
+ - file.__index
+Checking...	io
+ - io.close
+ - io.flush
+ - io.input
+ - io.lines
+ - io.open
+ - io.output
+ - io.popen
+ - io.read
+ - io.tmpfile
+ - io.type
+ - io.write
+ - io.stderr
+ - io.stdin
+ - io.stdout
+Checking...	math
+ - math.abs
+ - math.acos
+ - math.asin
+ - math.atan
+ - math.atan2
+ - math.ceil
+ - math.cos
+ - math.cosh
+ - math.deg
+ - math.exp
+ - math.floor
+ - math.fmod
+ - math.frexp
+ - math.ldexp
+ - math.log
+ - math.log10
+ - math.max
+ - math.min
+ - math.modf
+ - math.pow
+ - math.rad
+ - math.random
+ - math.randomseed
+ - math.sin
+ - math.sinh
+ - math.sqrt
+ - math.tan
+ - math.tanh
+ - math.huge
+ - math.pi
+Checking...	os
+ - os.clock
+ - os.date
+ - os.difftime
+ - os.execute
+ - os.exit
+ - os.getenv
+ - os.remove
+ - os.rename
+ - os.setlocale
+ - os.time
+ - os.tmpname
+Checking...	package
+ - package.loadlib
+ - package.config
+ - package.cpath
+ - package.path
+ - package.loaded
+ - package.preload
+ - package.searchpath
+ - package.searchers
+ - package.seeall
+ - package.loaders
+Checking...	string
+ - string.byte
+ - string.char
+ - string.dump
+ - string.find
+ - string.format
+ - string.gmatch
+ - string.gsub
+ - string.len
+ - string.lower
+ - string.match
+ - string.rep
+ - string.reverse
+ - string.sub
+ - string.upper
+Checking...	table
+ - table.concat
+ - table.insert
+ - table.remove
+ - table.sort
+ - table.maxn
+ - table.pack
+ - table.unpack
+Checking...	utf8
+```
