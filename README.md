@@ -1,8 +1,28 @@
 A script that know all modules definitions, usefull to check if every table/functions are present.
 
-The module [api-check.is](api-check/is.lua) detect the supported Lua version.
+# How to use
 
-All modules definitions are in [api-check/def/](api-check/def/).
+```sh
+$ lua api-check.lua
+$ lua api-check.lua -v
+$ lua api-check.lua -vv
+```
+
+# Detect the Lua version
+
+The module [api-check.is](api-check/is.lua) is the module that detect the supported Lua version.
+
+## Supported versions
+
+* Lua 5.1
+* Lua 5.2
+* Lua 5.3
+* LuaJIT 2.0
+* LuaJIT 2.1
+
+# API definitions
+
+# Sample of the package module
 
 The package definition ([api-check/def/package.lua](api-check/def/package.lua)):
 ```lua
@@ -35,13 +55,9 @@ addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21) {
 return def
 ```
 
-# Supported version
+# All modules
 
-* Lua 5.1
-* Lua 5.2
-* Lua 5.3
-* LuaJIT 2.0
-* LuaJIT 2.1
+All modules definitions are in [api-check/def/](api-check/def/).
 
 # Result
 
@@ -51,3 +67,14 @@ return def
 * [LuaJIT 2.0](result/luajit20.md)
 * [LuaJIT 2.1](result/luajit21.md)
 
+# TODO
+
+## New supported version
+
+* RaptorJIT
+* Some Lua VM in made in Go
+* Some Lua VM in made in Rust
+
+## shared project
+
+* See what is common with https://github.com/love2d-community/love-api
