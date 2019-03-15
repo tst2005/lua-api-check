@@ -1,5 +1,7 @@
 A script that know all modules definitions, usefull to check if every table/functions are present.
 
+The module [api-check.is](api-check/is.lua) detect the supported Lua version.
+
 # Supported version
 
 * Lua 5.1
