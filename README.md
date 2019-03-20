@@ -19,6 +19,7 @@ The module [api-check.is](api-check/is.lua) is the module that detect the suppor
 * Lua 5.3
 * LuaJIT 2.0
 * LuaJIT 2.1
+* [RaptorJIT 1.0](https://github.com/raptorjit/raptorjit/tree/v1.0.0)
 
 # API definitions
 
@@ -34,22 +35,22 @@ local adder = require "api-check.adder"
 local addif = adder(def)
 
 addif (true) {
-        f,"loadlib",
-        s,"config",
-        s,"cpath",
-        s,"path",
-        t,"loaded",
-        t,"preload",
+	f,"loadlib",
+	s,"config",
+	s,"cpath",
+	s,"path",
+	t,"loaded",
+	t,"preload",
 }
-addif (is.lua52 or is.lua53 or is.luajit20 or is.luajit21) {
-        f,"searchpath",
+addif (is.lua52 or is.lua53 or is.luajit20 or is.luajit21 or is.raptorjit10) {
+	f,"searchpath",
 }
 addif (is.lua52 or is.lua53) {
-        t,"searchers",
+	t,"searchers",
 }
-addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21) {
-        f,"seeall",
-        t,"loaders",
+addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21 or is.raptorjit10) {
+	f,"seeall",
+	t,"loaders",
 }
 
 return def
@@ -66,12 +67,12 @@ All modules definitions are in [api-check/def/](api-check/def/).
 * [Lua 5.3](result/lua53.md)
 * [LuaJIT 2.0](result/luajit20.md)
 * [LuaJIT 2.1](result/luajit21.md)
+* [RaptorJIT 1.0](result/raptorjit10.md)
 
 # TODO
 
 ## New supported version
 
-* RaptorJIT
 * Some Lua VM in made in Go
 * Some Lua VM in made in Rust
 
