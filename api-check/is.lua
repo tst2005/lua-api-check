@@ -21,7 +21,7 @@ if jit and type(jit.version)=="string" then
 			error("LuaJIT before 2.x is not supported")
 		end
 	elseif impl == "RaptorJIT" then
-		if jit.version_num and jit.version_num > 10000 then
+		if jit.version_num and jit.version_num >= 10000 then
 			is.raptorjit = true
 			if jit.version_num >= 20000 then
 				error("RaptorJIT >=2 is too recent, not supported")
@@ -31,7 +31,11 @@ if jit and type(jit.version)=="string" then
 			else
 				error("RaptorJIT >=1.1 not supported yet")
 			end
+		else
+			error("RaptorJIT, missing jit.version_num ? "..tostring(jit.version_num))
 		end
+	else
+		error("Unsupported jit implementation: "..impl)
 	end
 else
 	is.lua51 = _VERSION == "Lua 5.1"

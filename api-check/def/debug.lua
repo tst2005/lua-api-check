@@ -24,12 +24,12 @@ addif (is.lua52 or is.lua53 or is.luajit21) {
 	f,"getuservalue",
 	f,"setuservalue",
 }
-addif (is.lua52 or is.lua53 or is.luajit20 or is.luajit21) {
+addif (is.lua52 or is.lua53 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	f,"upvalueid",
 	f,"upvaluejoin",
 }
 
-addif (is.lua51 or is.luajit20 or is.luajit21) {
+addif (is.lua51 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	f,"setfenv",
 	f,"getfenv",
 }

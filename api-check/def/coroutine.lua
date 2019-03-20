@@ -13,7 +13,7 @@ addif (true) {
 	f,"wrap",
 	f,"yield",
 }
-addif (is.lua53) {
+addif (is.lua53 or is.raptorjit10) {
 	f,"isyieldable",
 }
 return def

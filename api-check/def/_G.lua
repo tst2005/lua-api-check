@@ -41,12 +41,12 @@ addif (true) {
 	f,"xpcall",
 }
 
-addif (is.luajit20 or is.luajit21) {
+addif (is.luajit20 or is.luajit21 or is.raptorjit10) {
 	t,"jit",
 	t,"bit",
 }
 
-addif (is.lua51 or is.luajit20 or is.luajit21) {
+addif (is.lua51 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	f,"gcinfo",
 	f,"module",
 	f,"setfenv",
@@ -54,7 +54,7 @@ addif (is.lua51 or is.luajit20 or is.luajit21) {
 	f,"getfenv",
 }
 
-addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21) {
+addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	f,"loadstring",
 	f,"unpack",
 }

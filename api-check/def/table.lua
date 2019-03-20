@@ -11,11 +11,11 @@ addif (true) {
 	f,"remove",
 	f,"sort",
 }
-addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21) {
+addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	f,"maxn",
 }
 
-addif (is.lua51 or is.luajit20 or is.luajit21) {
+addif (is.lua51 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	f,"foreach",
 	f,"foreachi",
 	f,"getn",
@@ -28,7 +28,7 @@ addif (is.lua52 or is.lua53 or is.luajit21) {
 	f,"pack",
 	f,"unpack",
 }
-addif (is.lua53) {
+addif (is.lua53 or is.raptorjit10) {
 	f,"move",
 }
 return def
