@@ -2,8 +2,7 @@ local t,s,f,n = "table", "string", "function", "number"
 local def = {}
 
 local is = require "api-check.is"
-local adder = require "api-check.adder"
-local addif = adder(def)
+local addif = require "api-check.adder"(def)
 
 addif (true) {
 	f,"byte",
@@ -28,6 +27,10 @@ addif (is.lua53) {
 	f,"pack",
 	f,"packsize",
 	f,"unpack",
+}
+addif (is.gopherlua01) {
+	f,"gfind",
+	t,"__index",
 }
 
 return def

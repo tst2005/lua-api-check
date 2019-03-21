@@ -2,8 +2,7 @@ local t,s,f,n = "table", "string", "function", "number"
 local def = {}
 
 local is = require "api-check.is"
-local adder = require "api-check.adder"
-local addif = adder(def)
+local addif = require "api-check.adder"(def)
 
 addif (true) {
 	f,"loadlib",
@@ -24,4 +23,13 @@ addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	t,"loaders",
 }
 
+local removeif = require "api-check.remover"(def)
+removeif (is.gopherlua01) {
+	f,"loadlib",
+	s,"config",
+	s,"cpath",
+	s,"path",
+	t,"loaded",
+	t,"preload",
+}
 return def

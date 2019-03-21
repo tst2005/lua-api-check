@@ -14,12 +14,14 @@ The module [api-check.is](api-check/is.lua) is the module that detect the suppor
 
 ## Supported versions
 
-* Lua 5.1
-* Lua 5.2
-* Lua 5.3
-* LuaJIT 2.0
-* LuaJIT 2.1
-* [RaptorJIT 1.0](https://github.com/raptorjit/raptorjit/tree/v1.0.0)
+* Lua 5.1 (aka `lua51`)
+* Lua 5.2 (aka `lua52`)
+* Lua 5.3 (aka `lua53`)
+* LuaJIT 2.0 (aka `luajit20`)
+* LuaJIT 2.1 (aka `luajit21`)
+* [RaptorJIT 1.0](https://github.com/raptorjit/raptorjit/tree/v1.0.0) (aka `raptorjit10`)
+* [GopherLua 0.1](https://github.com/yuin/gopher-lua) (aka `gopherlua01`)
+* [go-lua 0.0](https://github.com/Shopify/go-lua) (aka `golua00`)
 
 # API definitions
 
@@ -68,13 +70,19 @@ All modules definitions are in [api-check/def/](api-check/def/).
 * [LuaJIT 2.0](result/luajit20.md)
 * [LuaJIT 2.1](result/luajit21.md)
 * [RaptorJIT 1.0](result/raptorjit10.md)
+* [GopherLua 0.1](result/gopherlua01.md)
 
 # TODO
 
 ## New supported version
 
-* Some Lua VM in made in Go
-* Some Lua VM in made in Rust
+* Some Lua VM made in Go
+* Some Lua VM made in Rust (maybe https://github.com/tomaka/hlua)
+* Some Lua VM made in Erlang (maybe https://github.com/rvirding/luerl)
+
+## Common lua test
+
+* Import lua test made from thirdparty VM (gopherlua, go-lua, ...)
 
 ## shared project
 

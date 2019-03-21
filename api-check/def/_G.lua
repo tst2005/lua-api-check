@@ -2,8 +2,7 @@ local t,s,f,n = "table", "string", "function", "number"
 local def = {}
 
 local is = require "api-check.is"
-local adder = require "api-check.adder"
-local addif = adder(def)
+local addif = require "api-check.adder"(def)
 
 addif (true) {
 	t,"_G",
@@ -46,7 +45,7 @@ addif (is.luajit20 or is.luajit21 or is.raptorjit10) {
 	t,"bit",
 }
 
-addif (is.lua51 or is.luajit20 or is.luajit21 or is.raptorjit10) {
+addif (is.lua51 or is.luajit20 or is.luajit21 or is.raptorjit10 or is.gopherlua01) {
 	f,"gcinfo",
 	f,"module",
 	f,"setfenv",
@@ -54,7 +53,7 @@ addif (is.lua51 or is.luajit20 or is.luajit21 or is.raptorjit10) {
 	f,"getfenv",
 }
 
-addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21 or is.raptorjit10) {
+addif (is.lua51 or is.lua52 or is.luajit20 or is.luajit21 or is.raptorjit10 or is.gopherlua01) {
 	f,"loadstring",
 	f,"unpack",
 }
@@ -74,4 +73,13 @@ addif (is.lua53 or is.lua52 or is.luajit21) {
 	f,"rawlen",
 }
 
+addif (is.gopherlua01) {
+	s,"_GOPHER_LUA_VERSION",
+	f,"_printregs",
+	t,"channel",
+}
+local removeif = require "api-check.remover"(def)
+removeif (is.gopherlua01) {
+	f,"gcinfo",
+}
 return def

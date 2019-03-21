@@ -2,8 +2,7 @@ local t,s,f,n = "table", "string", "function", "number"
 local def = {}
 
 local is = require "api-check.is"
-local adder = require "api-check.adder"
-local addif = adder(def)
+local addif = require "api-check.adder"(def)
 
 addif (true) {
 	f,"close",
@@ -21,6 +20,10 @@ addif (true) {
 }
 addif (is.lua53) {
 	s,"__name",
+}
+local removeif = require"api-check.remover"(def)
+removeif (is.gopherlua01) {
+	f,"__gc",
 }
 
 return def

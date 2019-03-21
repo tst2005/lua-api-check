@@ -2,8 +2,7 @@ local t,s,f,n = "table", "string", "function", "number"
 local def = {}
 
 local is = require "api-check.is"
-local adder = require "api-check.adder"
-local addif = adder(def)
+local addif = require "api-check.adder"(def)
 
 addif (is.lua53) {
 	f,"char",

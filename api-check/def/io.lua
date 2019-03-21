@@ -2,8 +2,7 @@ local t,s,f,n,u = "table", "string", "function", "number", "userdata"
 local def = {}
 
 local is = require "api-check.is"
-local adder = require "api-check.adder"
-local addif = adder(def)
+local addif = require "api-check.adder"(def)
 
 addif (true) {
 	f,"close",

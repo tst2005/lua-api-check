@@ -1,5 +1,7 @@
 
 local is = {}
+
+local function init()
 if jit and type(jit.version)=="string" then
 	local impl = jit.version:gsub("^([^ ]+) .*$","%1")
 	if impl == "LuaJIT" then
@@ -38,10 +40,28 @@ if jit and type(jit.version)=="string" then
 		error("Unsupported jit implementation: "..impl)
 	end
 else
-	is.lua51 = _VERSION == "Lua 5.1"
-	is.lua52 = _VERSION == "Lua 5.2"
-	is.lua53 = _VERSION == "Lua 5.3"
-	--is.lua54 = _VERSION == "Lua 5.4"
-	assert(is.lua51 or is.lua52 or is.lua53)
+	if _VERSION == "Lua 5.1" then
+		if _GOPHER_LUA_VERSION then
+			if _GOPHER_LUA_VERSION == "GopherLua 0.1" then
+				is.gopherlua01 = true
+			else
+				error("unsupported GopherLua version")
+			end
+		else
+			is.lua51 = true
+		end
+	else
+		is.lua52 = _VERSION == "Lua 5.2"
+		is.lua53 = _VERSION == "Lua 5.3"
+		--is.lua54 = _VERSION == "Lua 5.4"
+		assert(is.lua51 or is.lua52 or is.lua53)
+	end
+end
+end -- /init
+
+is.init = function()
+	init()
+	is.init = nil
+	return is
 end
 return is

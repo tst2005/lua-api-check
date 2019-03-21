@@ -2,8 +2,7 @@ local t,s,f,n = "table", "string", "function", "number"
 local def = {}
 
 local is = require "api-check.is"
-local adder = require "api-check.adder"
-local addif = adder(def)
+local addif = require "api-check.adder"(def)
 
 addif (true) {
 	f,"clock",
@@ -18,4 +17,8 @@ addif (true) {
 	f,"time",
 	f,"tmpname",
 }
+addif (is.gopherlua01) {
+	f,"setenv",
+}
+
 return def
