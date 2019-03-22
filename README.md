@@ -74,6 +74,10 @@ All modules definitions are in [api-check/def/](api-check/def/).
 
 # TODO
 
+## Optionnal def
+
+* How to support optionnal content ...
+
 ## New supported version
 
 * Some Lua VM made in Go

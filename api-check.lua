@@ -8,6 +8,14 @@ elseif arg[1] == "-vv" then
 	table.remove(arg,1)
 end
 
+
+local runtimemodules = {}
+for k,v in pairs(package and package.loaded) do
+	if v then
+		table.insert(runtimemodules, k)
+	end
+end
+
 local is = require"api-check.is"
 if arg[1] then
 	local identity=arg[1]
@@ -26,12 +34,19 @@ end
 
 local check_shell_env = false
 
-local modules = { "_G", "coroutine", "debug", "file", "io", "math", "os", "package", "string", "table", "utf8"}
+local modules = { "_G", "coroutine", "debug", "file", "io", "math", "os", "package", "string", "table", "utf8", "bit32", "bit", "jit"}
 
 local defs = {}
 
+modules = runtimemodules
+
 for _i, modname in ipairs(modules) do
-	defs[modname] = require("api-check.def."..assert(modname))
+	local ok, mod = pcall(require, "api-check.def."..assert(modname))
+	if not ok then
+		print("missing module def for "..tostring(modname))
+	else
+		defs[modname] = require("api-check.def."..assert(modname))
+	end
 end
 
 local function checkthis(modname, mod, def)
@@ -79,12 +94,16 @@ local where = {}
 where.file = getmetatable(io.stdin)
 
 for _i, modname in ipairs(modules) do
-	local def = assert(defs[modname], "emptydef "..modname)
-	local mod = where[modname] or package.loaded[modname]
-	if verbose >=1 then
-		print("# Checking "..modname)
+	local def = defs[modname]
+	if not def then
+		print("ERROR: empty def for "..modname)
+	else
+		local mod = where[modname] or package.loaded[modname]
+		if verbose >=1 then
+			print("# Checking "..modname)
+		end
+		checkthis(modname, mod, def)
 	end
-	checkthis(modname, mod, def)
 end
 
 if check_shell_env then
