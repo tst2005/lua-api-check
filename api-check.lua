@@ -43,9 +43,12 @@ modules = runtimemodules
 for _i, modname in ipairs(modules) do
 	local ok, mod = pcall(require, "api-check.def."..assert(modname))
 	if not ok then
+		ok, mod = pcall(require, "api-check.impl-def."..assert(modname))
+	end
+	if not ok then
 		print("missing module def for "..tostring(modname))
 	else
-		defs[modname] = require("api-check.def."..assert(modname))
+		defs[modname] = mod
 	end
 end
 
