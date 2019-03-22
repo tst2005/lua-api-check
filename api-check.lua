@@ -11,6 +11,7 @@ end
 local is = require"api-check.is"
 if arg[1] then
 	local identity=arg[1]
+	assert(identity:find("^lua5[123]$") or identity:find("^luajit2[01]$") or identity:find("^raptorjit10$") or identity:find("^gopherlua01$"), "invalid identity")
 	--print("force identity to", identity)
 	if not is.init then
 		error("IS: already init-ed")
